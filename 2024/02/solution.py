@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+import copy
 with open(sys.argv[1] if len(sys.argv) > 1 else "input.txt") as f:
     data = f.read().splitlines()
 
@@ -36,7 +37,6 @@ def solve(data):
 def gold(data):
     golden = 0
     for line in data:
-        import copy
         subset = []
         for i in range(len(line)):
             new = copy.copy(line)
