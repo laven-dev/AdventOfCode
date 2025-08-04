@@ -95,56 +95,6 @@ def perimeter(region: set[Plant]) -> list[Plant]:
 
     return perim
 
-def horizontal_search(perim: list[Plant], start: Plant) -> frozenset[Plant]:
-    length = 1
-    side = [start]
-    while True:
-        tmp = Plant(start.y, start.x + length, start.type)
-        if tmp in perim:
-            side.append(tmp)
-            length += 1
-            continue
-        else:
-            break
-    
-    length = 1
-    while True:
-        tmp = Plant(start.y, start.x - length, start.type)
-        if tmp in perim:
-            side.append(tmp)
-            length += 1
-            continue
-        else:
-            break
-    
-    side = [Plant(x.y, x.x, type="_") for x in side]
-    return frozenset(side)
-
-def vertical_search(perim: list[Plant], start: Plant) -> frozenset[Plant]:
-    length = 1
-    side = [start]
-    while True:
-        tmp = Plant(start.y + length, start.x, start.type)
-        if tmp in perim:
-            side.append(tmp)
-            length += 1
-            continue
-        else:
-            break
-    
-    length = 1
-    while True:
-        tmp = Plant(start.y - length, start.x, start.type)
-        if tmp in perim:
-            side.append(tmp)
-            length += 1
-            continue
-        else:
-            break
-    
-    side = [Plant(x.y, x.x, type="_") for x in side]
-    return frozenset(side)
-
 def sides(region: set[Plant]) -> int:
     min_y = min([x.y for x in region])
     max_y = max([x.y for x in region])
